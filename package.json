@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "MTSA Discord Bot landing page",
   "scripts": {
-    "dev": "python -m http.server 3000",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy --env production",
     "build": "echo 'Static site - no build needed'"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
   },
   "keywords": ["discord", "bot", "mtsa"],
   "author": "",
