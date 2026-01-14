@@ -1,0 +1,15 @@
+name = "mtsa"
+main = "index.js"
+type = "javascript"
+
+[build]
+command = "echo 'Static site'"
+cwd = "./"
+watch_paths = ["**/*.{html,css,js}"]
+
+[build.upload]
+format = "service-worker"
+
+[[routes]]
+pattern = "mtsa.phawse.lol/*"
+zone_name = "phawse.lol"

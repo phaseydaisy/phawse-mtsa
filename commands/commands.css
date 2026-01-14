@@ -1,0 +1,136 @@
+.commands-hero {
+    text-align: center;
+    padding: 80px 0 60px;
+}
+
+.commands-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px;
+}
+
+.commands-hero p {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.commands-list {
+    padding: 40px 0 100px;
+}
+
+.loading {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--bright-blue);
+    padding: 60px 0;
+}
+
+.error {
+    text-align: center;
+    font-size: 1.3rem;
+    color: var(--bright-pink);
+    padding: 60px 20px;
+    background: rgba(255, 46, 151, 0.1);
+    border-radius: 15px;
+    border: 2px solid rgba(255, 46, 151, 0.3);
+}
+
+.command-category {
+    margin-bottom: 80px;
+}
+
+.command-category h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--bright-blue);
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(0, 217, 255, 0.3);
+}
+
+.commands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.command-item {
+    background: rgba(107, 27, 154, 0.2);
+    padding: 25px;
+    border-radius: 15px;
+    border: 2px solid rgba(0, 217, 255, 0.2);
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+}
+
+.command-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--bright-pink);
+    box-shadow: 0 10px 30px rgba(255, 46, 151, 0.3);
+}
+
+.command-item .cmd {
+    display: inline-block;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--bright-pink);
+    margin-bottom: 10px;
+    padding: 5px 12px;
+    background: rgba(255, 46, 151, 0.1);
+    border-radius: 8px;
+}
+
+.command-item p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.nsfw-category {
+    border: 2px solid rgba(255, 46, 151, 0.3);
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba(107, 27, 154, 0.1);
+}
+
+.nsfw-category h2 {
+    color: var(--bright-pink);
+}
+
+.nsfw-warning {
+    color: rgba(255, 46, 151, 0.8);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    background: rgba(255, 46, 151, 0.1);
+    border-radius: 8px;
+    border-left: 3px solid var(--bright-pink);
+}
+
+.logo h1 a {
+    color: inherit;
+    text-decoration: none;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+@media (max-width: 768px) {
+    .commands-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .commands-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .command-category h2 {
+        font-size: 1.5rem;
+    }
+}

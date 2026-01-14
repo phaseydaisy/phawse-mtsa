@@ -1,0 +1,12 @@
+{
+  "name": "mtsa-landing",
+  "version": "1.0.0",
+  "description": "MTSA Discord Bot landing page",
+  "scripts": {
+    "dev": "python -m http.server 3000",
+    "build": "echo 'Static site - no build needed'"
+  },
+  "keywords": ["discord", "bot", "mtsa"],
+  "author": "",
+  "license": "MIT"
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commands - MTSA Bot</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="commands.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-circle"></div>
+                <h1><a href="/">MTSA</a></h1>
+            </div>
+            <nav>
+                <a href="/commands" class="nav-link">Commands</a>
+                <a href="https://discord.com/oauth2/authorize?client_id=1457195035522105398" class="nav-link invite-btn" target="_blank">Invite Bot</a>
+            </nav>
+        </header>
+
+        <section class="commands-hero">
+            <h1>Bot Commands</h1>
+            <p>All available commands for MTSA Discord Bot</p>
+        </section>
+
+        <section class="commands-list" id="commands-container">
+            <div class="loading">Loading commands...</div>
+        </section>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="https://phawse.lol">Main Site</a>
+                    <a href="https://api.phawse.lol">API</a>
+                </div>
+                <p>&copy; 2026 MTSA. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function createStars() {
+            const starsContainer = document.querySelector('.stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        createStars();
+
+        // Bot commands data from GitHub repository
+        const botCommands = {
+            'Affection & Romance': [
+                { name: 'hug', description: 'Give someone a warm hug! (embrace, cuddle, snuggle)', emoji: '🤗' },
+                { name: 'kiss', description: 'Give someone a kiss! (smooch, peck, lip)', emoji: '💋' },
+                { name: 'nuzzle', description: 'Nuzzle someone affectionately! (snuggle, cuddle, affection)', emoji: '🥰' },
+                { name: 'pet', description: 'Pet someone gently! (pat, stroke, caress)', emoji: '✨' },
+                { name: 'handhold', description: 'Hold hands with someone! (romantic, intimate)', emoji: '🤝' },
+            ],
+            'Emotions & Reactions': [
+                { name: 'blush', description: 'Blush adorably! (shy, embarrassed, flustered)', emoji: '😊' },
+                { name: 'cheer', description: 'Cheer someone on! (celebrate, clap, hype, support)', emoji: '🎉' },
+                { name: 'pout', description: 'Pout cutely! (sulk, adorable)', emoji: '😤' },
+                { name: 'dance', description: 'Dance with someone! (groove, move, jive)', emoji: '💃' },
+                { name: 'cry', description: 'Cry alone or at someone 😢', emoji: '😭' },
+                { name: 'laugh', description: 'Laugh alone or at someone 😂', emoji: '😂' },
+                { name: 'greet', description: 'Greet someone with a wave! 👋', emoji: '👋' },
+            ],
+            'Playful Actions': [
+                { name: 'bite', description: 'Bite someone (nibble, chomp)', emoji: '🦷' },
+                { name: 'slap', description: 'Slap someone (hit, punch, strike)', emoji: '👋' },
+                { name: 'tickle', description: 'Tickle someone (tease, giggle, laugh)', emoji: '😆' },
+                { name: 'stare', description: 'Stare at someone (glare, ogle, eye contact)', emoji: '👀' },
+                { name: 'boop', description: 'Boop someone on the nose! (cute, playful tap)', emoji: '👃' },
+                { name: 'poke', description: 'Poke someone! (prod, jab, annoy)', emoji: '👉' },
+                { name: 'pinch', description: 'Pinch someone! (tweak, squeeze)', emoji: '🤏' },
+                { name: 'wink', description: 'Wink at someone! (flirt, tease)', emoji: '😉' },
+                { name: 'lick', description: 'Lick someone! (playful, teasing)', emoji: '👅' },
+                { name: 'smirk', description: 'Smirk at someone! (cocky, confident, sly)', emoji: '😏' },
+                { name: 'highfive', description: 'Give someone a high-five! (celebrate, victory)', emoji: '🙌' },
+            ],
+            'Marriage System': [
+                { name: 'marry', description: 'Propose marriage to someone! 💍', emoji: '💍' },
+                { name: 'marriage', description: 'Manage your marriages (list, divorce)', emoji: '💒' },
+            ],
+            'NSFW Commands': [
+                { name: 'edge', description: 'Edge someone or yourself 🔞 (arousal, buildup)', emoji: '🔞', nsfw: true },
+                { name: 'horny-level', description: 'Check the horny level 🔞 (arousal rating)', emoji: '🔥', nsfw: true },
+                { name: 'spank', description: 'Spank someone 🔞 (playful aggression)', emoji: '👋', nsfw: true },
+                { name: 'suck', description: 'Suck someone 🔞 (oral, pleasure)', emoji: '💦', nsfw: true },
+                { name: 'rape', description: 'Playfully attack someone! (aggressive roleplay)', emoji: '⚠️', nsfw: true },
+                { name: 'rapestats', description: 'View rape statistics', emoji: '📊', nsfw: true },
+            ]
+        };
+
+        // Load commands
+        function loadCommands() {
+            const container = document.getElementById('commands-container');
+            container.innerHTML = '';
+
+            // Generate command sections for each category
+            for (const [category, commands] of Object.entries(botCommands)) {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = `command-category ${category === 'NSFW Commands' ? 'nsfw-category' : ''}`;
+
+                const heading = document.createElement('h2');
+                heading.textContent = category;
+                categoryDiv.appendChild(heading);
+
+                if (category === 'NSFW Commands') {
+                    const warning = document.createElement('p');
+                    warning.className = 'nsfw-warning';
+                    warning.textContent = '⚠️ These commands should only be used in age-restricted channels';
+                    categoryDiv.appendChild(warning);
+                }
+
+                const grid = document.createElement('div');
+                grid.className = 'commands-grid';
+
+                commands.forEach(cmd => {
+                    const item = document.createElement('div');
+                    item.className = 'command-item';
+
+                    const commandName = document.createElement('h3');
+                    commandName.innerHTML = `${cmd.emoji} <span class="cmd">/${cmd.name}</span>`;
+                    item.appendChild(commandName);
+
+                    const desc = document.createElement('p');
+                    desc.textContent = cmd.description;
+                    item.appendChild(desc);
+
+                    grid.appendChild(item);
+                });
+
+                categoryDiv.appendChild(grid);
+                container.appendChild(categoryDiv);
+            }
+        }
+
+        // Load commands on page load
+        loadCommands();
+    </script>
+</body>
+</html>
